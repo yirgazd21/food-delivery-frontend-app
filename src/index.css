@@ -1,0 +1,17 @@
+@import "tailwindcss";
+
+:root {
+  --color-brand: #e11d48; /* rose-600 */
+}
+
+@utility btn-action {
+  @apply px-5 py-2 rounded-full font-medium transition-all;
+  @apply bg-[--color-brand] text-white hover:opacity-90 active:scale-95;
+}
+
+.text-brand {
+  color: var(--color-brand);
+}
+.hover\:text-brand-dark:hover {
+  color: #be123c;
+}

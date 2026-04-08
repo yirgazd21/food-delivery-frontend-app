@@ -148,7 +148,7 @@ const ManageFoods = () => {
         </button>
       </div>
 
-      <div className="bg-white rounded-xl shadow-md overflow-hidden">
+      <div className="bg-white rounded-xl shadow-md overflow-">
         <div className="flex gap-4 mb-6">
           <input
             type="text"
@@ -160,11 +160,13 @@ const ManageFoods = () => {
           <select
             value={filterCategory}
             onChange={(e) => setFilterCategory(e.target.value)}
-            className="px-4 py-2 border rounded-lg"
+            className="px-4 py-2 border rounded-lg relative z-50 h-5"
           >
             <option value="">All Categories</option>
             {categories.map(cat => (
-              <option key={cat.id} value={cat.id}>{cat.name}</option>
+              <option key={cat.id} value={cat.id}>
+                {cat.name}
+              </option>
             ))}
           </select>
         </div>

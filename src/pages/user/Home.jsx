@@ -71,9 +71,8 @@ const Home = () => {
         <div className="flex gap-2 overflow-x-auto pb-2">
           <button
             onClick={() => setSelectedCategory(null)}
-            className={`px-4 py-2 rounded-full whitespace-nowrap ${
-              !selectedCategory ? 'bg-rose-500 text-white' : 'bg-gray-200 text-gray-700'
-            }`}
+            className={`px-4 py-2 rounded-full whitespace-nowrap ${!selectedCategory ? 'bg-rose-500 text-white' : 'bg-gray-200 text-gray-700'
+              }`}
           >
             All
           </button>
@@ -81,9 +80,8 @@ const Home = () => {
             <button
               key={cat.id}
               onClick={() => setSelectedCategory(cat.id)}
-              className={`px-4 py-2 rounded-full whitespace-nowrap ${
-                selectedCategory === cat.id ? 'bg-rose-500 text-white' : 'bg-gray-200 text-gray-700'
-              }`}
+              className={`px-4 py-2 rounded-full whitespace-nowrap ${selectedCategory === cat.id ? 'bg-rose-500 text-white' : 'bg-gray-200 text-gray-700'
+                }`}
             >
               {cat.name}
             </button>
@@ -95,10 +93,11 @@ const Home = () => {
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
         {foods.map(food => (
           <div key={food.id} className="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition">
+
             <img
-              src={food.image_url || "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='200' viewBox='0 0 300 200'%3E%3Crect width='300' height='200' fill='%23f3f4f6'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' fill='%239ca3af' font-size='14'%3EFood%3C/text%3E%3C/svg%3E"}
+              src={food.image_url ? `${import.meta.env.VITE_API_URL.replace('/api', '')}${food.image_url}` : '/placeholder.jpg'}
               alt={food.name}
-              className="w-full h-48 object-cover"
+              className="w-12 h-12 object-cover rounded"
             />
             <div className="p-4">
               <h3 className="font-semibold text-lg">{food.name}</h3>

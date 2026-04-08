@@ -185,7 +185,11 @@ const ManageFoods = () => {
             {foods.map(food => (
               <tr key={food.id}>
                 <td className="px-4 py-3">
-                  <img src={food.image_url || '/placeholder.jpg'} alt={food.name} className="w-12 h-12 object-cover rounded" />
+                  <img
+                    src={food.image_url ? `${import.meta.env.VITE_API_URL.replace('/api', '')}${food.image_url}` : '/placeholder.jpg'}
+                    alt={food.name}
+                    className="w-12 h-12 object-cover rounded"
+                  />
                 </td>
                 <td className="px-4 py-3 font-medium">{food.name}</td>
                 <td className="px-4 py-3">{food.category_name}</td>

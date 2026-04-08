@@ -93,7 +93,7 @@ const ManageCategories = () => {
           <div key={cat.id} className="bg-white rounded-xl shadow-md p-4 flex justify-between items-center">
             <div className="flex items-center gap-3">
               {cat.image_url && (
-                <img src={cat.image_url} alt={cat.name} className="w-12 h-12 object-cover rounded" />
+                <img src={`${import.meta.env.VITE_API_URL.replace('/api', '')}${cat.image_url}`} alt={cat.name} className="w-12 h-12 object-cover rounded" />
               )}
               <div>
                 <h3 className="font-semibold text-lg">{cat.name}</h3>

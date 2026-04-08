@@ -114,7 +114,7 @@ const Home = () => {
                 <button
                   onClick={(e) => handleAddToCart(food.id, e)}
                   disabled={adding === food.id}
-                  className="btn-action px-4 py-1.5 text-sm"
+                  className="btn-action px-4 py-1.5 text-sm text-orange-400 bg-blue-200 hover:bg-blue-300 cursor-pointer"
                 >
                   {adding === food.id ? 'Adding...' : 'Add to Cart'}
                 </button>

@@ -92,18 +92,25 @@ const Home = () => {
       {/* Food Grid */}
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
         {foods.map(food => (
-          <div key={food.id} className="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition">
+          <div key={food.id} className="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition transform hover:scale-105">
 
             <img
-              src={food.image_url ? `${import.meta.env.VITE_API_URL.replace('/api', '')}${food.image_url}` : '/placeholder.jpg'}
+              src={
+                food.image_url
+                  ? food.image_url.startsWith('http')
+                    ? food.image_url
+                    : `${import.meta.env.VITE_API_URL.replace('/api', '')}${food.image_url}`
+                  : '/placeholder.jpg'
+              }
               alt={food.name}
-              className="w-12 h-12 object-cover rounded"
+              className="w-full h-48 sm:h-56 md:h-60 object-cover rounded-t-xl"
             />
+
             <div className="p-4">
               <h3 className="font-semibold text-lg">{food.name}</h3>
               <p className="text-gray-600 text-sm mt-1 line-clamp-2">{food.description}</p>
               <div className="flex justify-between items-center mt-3">
-                <span className="text-rose-500 font-bold">${food.price}</span>
+                <span className="text-rose-500 font-bold text-lg">${food.price}</span>
                 <button
                   onClick={(e) => handleAddToCart(food.id, e)}
                   disabled={adding === food.id}
@@ -113,6 +120,7 @@ const Home = () => {
                 </button>
               </div>
             </div>
+
           </div>
         ))}
       </div>

@@ -62,9 +62,12 @@ const Cart = () => {
                 <div key={item.cart_item_id} className="p-4 flex gap-4 items-center">
                   {/* Image */}
                   <img
-                    src={item.image_url || "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80' viewBox='0 0 80 80'%3E%3Crect width='80' height='80' fill='%23f3f4f6'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' fill='%239ca3af' font-size='10'%3EFood%3C/text%3E%3C/svg%3E"}
+                    src={item.image_url
+                      ? `${import.meta.env.VITE_API_URL.replace('/api', '')}${item.image_url}`
+                      : '/placeholder.jpg'
+                    }
                     alt={item.name}
-                    className="w-20 h-20 object-cover rounded-lg"
+                    className="w-12 h-12 object-cover rounded"
                   />
                   {/* Details */}
                   <div className="flex-1">

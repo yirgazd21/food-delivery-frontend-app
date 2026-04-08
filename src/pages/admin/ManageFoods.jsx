@@ -186,7 +186,13 @@ const ManageFoods = () => {
               <tr key={food.id}>
                 <td className="px-4 py-3">
                   <img
-                    src={food.image_url ? `${import.meta.env.VITE_API_URL.replace('/api', '')}${food.image_url}` : '/placeholder.jpg'}
+                    src={
+                      food.image_url
+                        ? food.image_url.startsWith('http')
+                          ? food.image_url
+                          : `${import.meta.env.VITE_API_URL.replace('/api', '')}${food.image_url}`
+                        : '/placeholder.jpg'
+                    }
                     alt={food.name}
                     className="w-12 h-12 object-cover rounded"
                   />
